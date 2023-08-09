@@ -64,7 +64,7 @@ function App(): JSX.Element {
   };
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+
       <SafeAreaView style={backgroundStyle}>
         <StatusBar
             barStyle={isDarkMode ? 'light-content' : 'dark-content'}
@@ -95,7 +95,6 @@ function App(): JSX.Element {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </GestureHandlerRootView>
   );
 }
 
