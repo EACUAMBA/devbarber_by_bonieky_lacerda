@@ -9,7 +9,7 @@ import {GestureHandlerRootView} from "react-native-gesture-handler";
 
 AppRegistry.registerComponent(appName, () => () => {
     return (
-        <GestureHandlerRootView>
+        <GestureHandlerRootView style={{flex: 1}}>
             <App/>
         </GestureHandlerRootView>
     )
