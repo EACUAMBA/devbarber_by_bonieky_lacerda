@@ -3,8 +3,11 @@ import {Text} from 'react-native';
 import {Container, LoadingIcon} from './styles';
 import DevBarber from './../../assets/barber.svg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native'
 
 export default () => {
+
+    const navigationHook = useNavigation();
 
     useEffect(() => {
        const checkToken = async () =>{
@@ -15,7 +18,7 @@ export default () => {
                console.log("tens token papa 😎! ", token)
            }else{
                //enviar o individuo para a página de login
-               console.log("Não tens token papa 😭!")
+               navigationHook.navigate("SignIn");
            }
        }
 
