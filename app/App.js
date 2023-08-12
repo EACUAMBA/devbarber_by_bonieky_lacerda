@@ -6,7 +6,7 @@ import UserContextProvider from './src/contexts/UserContext'
 export default () => {
     return (
         <UserContextProvider>
-            <NavigationContainer>
+            <NavigationContainer theme={{colors: {background: '#63C2D1'}}}>
                 <MainStack/>
             </NavigationContainer>
         </UserContextProvider>
