@@ -10,6 +10,7 @@ import {
     SignInMessageButtonTextBold
 } from './styles';
 import DevBarber from './../../assets/barber.svg';
+import SignInput from './../../components/SignInput';
 
 export default () => {
     return (
@@ -17,8 +18,8 @@ export default () => {
             <DevBarber width={"100%"} height={"160px"}/>
 
             <InputArea>
-                {/*<SignInput/>*/}
-                {/*<SignInput/>*/}
+                <SignInput/>
+                <SignInput/>
 
                 <CustomButton>
                     <CustomButtonText>Login</CustomButtonText>
