@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text} from 'react-native';
 import {
     Container,
@@ -15,13 +15,16 @@ import EmailIcon from './../../assets/email.svg';
 import LockIcon from './../../assets/lock.svg';
 
 export default () => {
+    const [emailField, setEmailField] = useState('edilson@gmail.com');
+    const [passwordField, setPasswordField] = useState('');
+
     return (
         <Container>
             <DevBarber width={"100%"} height={"160px"}/>
 
             <InputArea>
-                <SignInput IconSvg={EmailIcon} placeholder={"Digite o teu email."}/>
-                <SignInput IconSvg={LockIcon} placeholder={"Digite a tua senha."}/>
+                <SignInput IconSvg={EmailIcon} placeholder={"Digite o teu email."} value={emailField} onChangeText={(text) => setEmailField(text)}/>
+                <SignInput IconSvg={LockIcon} placeholder={"Digite a tua senha."} value={passwordField} onChangeText={(text) => setPasswordField(text)} password={true}/>
 
                 <CustomButton>
                     <CustomButtonText>Login</CustomButtonText>
