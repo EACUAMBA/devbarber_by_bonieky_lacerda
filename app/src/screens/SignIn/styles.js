@@ -17,9 +17,37 @@ export const Container = styled.SafeAreaView`
     SignInMessageButtonTextBold
  */
 
-export const InputArea = styled.View``;
-export const CustomButton = styled.TouchableOpacity``;
-export const CustomButtonText = styled.Text``;
-export const SignInMessageButton = styled.TouchableOpacity``;
-export const SignInMessageButtonText = styled.Text``;
-export const SignInMessageButtonTextBold = styled.Text``;
+export const InputArea = styled.View`
+  padding: 40px;
+`;
+
+export const CustomButton = styled.TouchableOpacity`
+  height: 60px;
+  background-color: #268596;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+`;
+export const CustomButtonText = styled.Text`
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #FFF
+`;
+
+export const SignInMessageButton = styled.TouchableOpacity`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+`;
+export const SignInMessageButtonText = styled.Text`
+  font-size: 16px;
+  color: #268596;
+`;
+export const SignInMessageButtonTextBold = styled.Text`
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #268596;
+`;
