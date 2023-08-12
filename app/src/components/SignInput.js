@@ -12,10 +12,10 @@ const InputArea = styled.View`
   margin-bottom: 15px;
 `;
 
-export default () => {
+export default ({IconSvg}) => {
     return (
         <InputArea>
-
+            <IconSvg width={'24'} height={'24'} fill={'#268596'}/>
         </InputArea>
     );
 }

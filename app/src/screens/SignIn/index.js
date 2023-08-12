@@ -11,6 +11,8 @@ import {
 } from './styles';
 import DevBarber from './../../assets/barber.svg';
 import SignInput from './../../components/SignInput';
+import EmailIcon from './../../assets/email.svg';
+import LockIcon from './../../assets/lock.svg';
 
 export default () => {
     return (
@@ -18,8 +20,8 @@ export default () => {
             <DevBarber width={"100%"} height={"160px"}/>
 
             <InputArea>
-                <SignInput/>
-                <SignInput/>
+                <SignInput IconSvg={EmailIcon}/>
+                <SignInput IconSvg={LockIcon}/>
 
                 <CustomButton>
                     <CustomButtonText>Login</CustomButtonText>
