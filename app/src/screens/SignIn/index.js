@@ -20,8 +20,8 @@ export default () => {
             <DevBarber width={"100%"} height={"160px"}/>
 
             <InputArea>
-                <SignInput IconSvg={EmailIcon}/>
-                <SignInput IconSvg={LockIcon}/>
+                <SignInput IconSvg={EmailIcon} placeholder={"Digite o teu email."}/>
+                <SignInput IconSvg={LockIcon} placeholder={"Digite a tua senha."}/>
 
                 <CustomButton>
                     <CustomButtonText>Login</CustomButtonText>
