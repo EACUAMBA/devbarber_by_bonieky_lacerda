@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
     Container,
@@ -15,8 +15,13 @@ import PersonIcon from './../../assets/person.svg';
 import EmailIcon from './../../assets/email.svg';
 import LockIcon from './../../assets/lock.svg';
 
+import Api from './../../Api';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {UserContext} from '../../contexts/UserContext'
+
 export default () => {
     const navigation = useNavigation();
+    const {dispatch: userDispatcher} = useContext(UserContext)
 
     const [nameField, setNameField] = useState('Edilson A. Cuamba');
     const [emailField, setEmailField] = useState('edilson@gmail.com');
@@ -28,8 +33,26 @@ export default () => {
         });
     }
 
-    function handleSignClick(){
-        console.log("handleSignClick");
+    async function handleSignClick(){
+        if(nameField !== '' && emailField !== '' && passwordField !== ''){
+
+            const responseJson = await Api.signUp(nameField, emailField, passwordField);
+
+            if(responseJson.token){
+                await AsyncStorage.setItem('token', responseJson.token);
+
+                userDispatcher({
+                    type: 'setAvatar',
+                    payload: responseJson.data.avatar
+                })
+
+                navigation.reset({
+                    routes: [{name: "MainTab"}]
+                })
+            }else{
+                alert("Not Working")
+            }
+        }
     }
 
     return (
