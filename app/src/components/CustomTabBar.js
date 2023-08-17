@@ -21,26 +21,30 @@ const TabItem = styled.TouchableOpacity`
 
 export default ({state, navigation}) => {
 
-    function goTo(screenName){
+    function goTo(screenName) {
         navigation.navigate(screenName);
+    }
+
+    function getOpacity(index) {
+        return state.index === index ? 1 : 0.6;
     }
 
     return (
         <TabArea>
             <TabItem onPress={() => goTo('Home')}>
-                <HomeIcon width={"24"} height={"24"} fill={"#FFFFFF"}/>
+                <HomeIcon style={{opacity: getOpacity(0)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
             </TabItem>
             <TabItem onPress={() => goTo('Search')}>
-                <SearchIcon width={"24"} height={"24"} fill={"#FFFFFF"}/>
+                <SearchIcon style={{opacity: getOpacity(1)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
             </TabItem>
             <TabItem onPress={() => goTo('Appointments')}>
-                <TodayIcon width={"24"} height={"24"} fill={"#FFFFFF"}/>
+                <TodayIcon style={{opacity: getOpacity(2)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
             </TabItem>
             <TabItem onPress={() => goTo('Favorites')}>
-                <FavoriteIcon width={"24"} height={"24"} fill={"#FFFFFF"}/>
+                <FavoriteIcon style={{opacity: getOpacity(3)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
             </TabItem>
             <TabItem onPress={() => goTo('Profile')}>
-                <PersonIcon width={"24"} height={"24"} fill={"#FFFFFF"}/>
+                <PersonIcon style={{opacity: getOpacity(4)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
             </TabItem>
         </TabArea>
     );
