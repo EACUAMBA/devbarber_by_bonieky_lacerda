@@ -13,8 +13,9 @@ export default () => {
             const token = await AsyncStorage.getItem("token");
 
             if (token != null) {
-                //validar se o token ainda é valido;
-                console.log("tens token papa 😎! ", token)
+                navigationHook.reset({
+                    routes: [{name: "MainTab"}]
+                })
             } else {
                 //enviar o individuo para a página de login
                 navigationHook.navigate("SignIn");
