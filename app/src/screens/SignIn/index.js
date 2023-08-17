@@ -25,8 +25,8 @@ export default () => {
     const {dispatch: userDispatcher} = useContext(UserContext);
     const navigation = useNavigation();
 
-    const [emailField, setEmailField] = useState('suporte@b7web.com.br');
-    const [passwordField, setPasswordField] = useState('1234');
+    const [emailField, setEmailField] = useState('edilson2023@gmail.com');
+    const [passwordField, setPasswordField] = useState('12345');
 
     function handleSignInMessageButtonClick() {
         navigation.reset({

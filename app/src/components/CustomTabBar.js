@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {styled} from 'styled-components/native';
+import {UserContext} from './../contexts/UserContext'
 
 import HomeIcon from './../assets/home.svg';
 import SearchIcon from './../assets/search.svg';
@@ -32,7 +33,16 @@ const TabItemCenter = styled.TouchableOpacity`
   margin-top: -30px;
 `;
 
+const AvatarIcon = styled.Image`
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+
+`;
+
 export default ({state, navigation}) => {
+
+    const {state: user} = useContext(UserContext);
 
     function goTo(screenName) {
         navigation.navigate(screenName);
@@ -40,6 +50,10 @@ export default ({state, navigation}) => {
 
     function getOpacity(index) {
         return state.index === index ? 1 : 0.6;
+    }
+
+    function getAvatar() {
+
     }
 
     return (
@@ -57,8 +71,14 @@ export default ({state, navigation}) => {
                 <FavoriteIcon style={{opacity: getOpacity(3)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
             </TabItem>
             <TabItem onPress={() => goTo('Profile')}>
-                <PersonIcon style={{opacity: getOpacity(4)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
+                {
+                    (user.avatar != '') ?
+                        <AvatarIcon source={{uri: user.avatar}}/>
+                        :
+                        <PersonIcon style={{opacity: getOpacity(4)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
+                }
             </TabItem>
         </TabArea>
-    );
+    )
+        ;
 }
