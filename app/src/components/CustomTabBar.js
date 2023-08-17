@@ -19,6 +19,19 @@ const TabItem = styled.TouchableOpacity`
   flex: 1;
 `;
 
+const TabItemCenter = styled.TouchableOpacity`
+  height: 70px;
+  width: 70px;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 35px;
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 3px solid #4EADBE;
+  margin-top: -30px;
+`;
+
 export default ({state, navigation}) => {
 
     function goTo(screenName) {
@@ -37,9 +50,9 @@ export default ({state, navigation}) => {
             <TabItem onPress={() => goTo('Search')}>
                 <SearchIcon style={{opacity: getOpacity(1)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
             </TabItem>
-            <TabItem onPress={() => goTo('Appointments')}>
-                <TodayIcon style={{opacity: getOpacity(2)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
-            </TabItem>
+            <TabItemCenter onPress={() => goTo('Appointments')}>
+                <TodayIcon width={"32"} height={"32"} fill={"#4EADBE"}/>
+            </TabItemCenter>
             <TabItem onPress={() => goTo('Favorites')}>
                 <FavoriteIcon style={{opacity: getOpacity(3)}} width={"24"} height={"24"} fill={"#FFFFFF"}/>
             </TabItem>
