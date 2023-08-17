@@ -1,10 +1,10 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
     Container,
-    InputArea,
     CustomButton,
     CustomButtonText,
+    InputArea,
     SignInMessageButton,
     SignInMessageButtonText,
     SignInMessageButtonTextBold
@@ -27,18 +27,18 @@ export default () => {
     const [emailField, setEmailField] = useState('edilson@gmail.com');
     const [passwordField, setPasswordField] = useState('');
 
-    function handleSignInMessageButtonClick(){
+    function handleSignInMessageButtonClick() {
         navigation.reset({
             routes: [{name: 'SignIn'}]
         });
     }
 
-    async function handleSignClick(){
-        if(nameField !== '' && emailField !== '' && passwordField !== ''){
+    async function handleSignClick() {
+        if (nameField !== '' && emailField !== '' && passwordField !== '') {
 
             const responseJson = await Api.signUp(nameField, emailField, passwordField);
 
-            if(responseJson.token){
+            if (responseJson.token) {
                 await AsyncStorage.setItem('token', responseJson.token);
 
                 userDispatcher({
@@ -49,7 +49,7 @@ export default () => {
                 navigation.reset({
                     routes: [{name: "MainTab"}]
                 })
-            }else{
+            } else {
                 alert("Not Working")
             }
         }
@@ -60,9 +60,12 @@ export default () => {
             <DevBarber width={"100%"} height={"160px"}/>
 
             <InputArea>
-                <SignInput IconSvg={PersonIcon} placeholder={"Digite o teu nome."} value={nameField} onChangeText={(text) => setNameField(text)}/>
-                <SignInput IconSvg={EmailIcon} placeholder={"Digite o teu email."} value={emailField} onChangeText={(text) => setEmailField(text)}/>
-                <SignInput IconSvg={LockIcon} placeholder={"Digite a tua senha."} value={passwordField} onChangeText={(text) => setPasswordField(text)} password={true}/>
+                <SignInput IconSvg={PersonIcon} placeholder={"Digite o teu nome."} value={nameField}
+                           onChangeText={(text) => setNameField(text)}/>
+                <SignInput IconSvg={EmailIcon} placeholder={"Digite o teu email."} value={emailField}
+                           onChangeText={(text) => setEmailField(text)}/>
+                <SignInput IconSvg={LockIcon} placeholder={"Digite a tua senha."} value={passwordField}
+                           onChangeText={(text) => setPasswordField(text)} password={true}/>
 
                 <CustomButton onPress={handleSignClick}>
                     <CustomButtonText>Login</CustomButtonText>
