@@ -28,6 +28,29 @@ export const SearchButton = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-export const LocationArea = styled.View``;
-export const LocationInput = styled.TextInput``;
-export const LocationFinder = styled.TouchableOpacity``;
+export const LocationArea = styled.View`
+  background-color: #4EADBE;
+  height: 60px;
+  border-radius: 30px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 30px;
+`;
+export const LocationInput = styled.TextInput`
+  flex: 1;
+  font-size: 16px;
+  color: #FFFFFF;
+`;
+export const LocationFinder = styled.TouchableOpacity`
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LoadingIcon = styled.ActivityIndicator`
+  margin-top: 50px;
+`;
