@@ -10,7 +10,11 @@ import CustomTabBar from '../components/CustomTabBar';
 const bottomTabNavigator = createBottomTabNavigator();
 
 export default () => (
-    <bottomTabNavigator.Navigator tabBar={props => <CustomTabBar {...props} />}
+    <bottomTabNavigator.Navigator
+        tabBar={props => <CustomTabBar {...props} />}
+        screenOptions={{
+            headerShown: false
+        }}
     >
         <bottomTabNavigator.Screen name={"Home"} component={Home}/>
         <bottomTabNavigator.Screen name={"Search"} component={Search}/>
