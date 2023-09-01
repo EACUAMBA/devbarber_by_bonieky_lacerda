@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Platform} from 'react-native';
+import {Platform, RefreshControl} from 'react-native';
 import {PERMISSIONS, request} from 'react-native-permissions'
 import {useNavigation} from '@react-navigation/native';
 import {
@@ -30,6 +30,7 @@ export default () => {
     const [coords, setCoords] = useState(null);
     const [barbers, setBarbers] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [refreshing, setRefreshing] = useState(false);
 
     const handlePressLocationFinder = async () => {
         const result = await request(
@@ -78,9 +79,17 @@ export default () => {
         await getBarbers();
     }, [])
 
+    const onRefresh = ()=> {
+        //disable the refresh icon
+        setRefreshing(false);
+        getBarbers();
+    }
+
     return (
         <Container>
-            <Scroller>
+            <Scroller refreshControl={
+                <RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>
+            }>
 
                 <HeaderArea>
                     <HeaderTitle>
