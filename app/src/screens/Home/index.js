@@ -47,10 +47,11 @@ export default () => {
             setCoords(null);
             setBarbers([]);
 
-            Geolocation.getCurrentPosition(async (info) => {
+            Geolocation.getCurrentPosition((info) => {
                 setCoords(info.coords);
-                await getBarbers();
             });
+
+            getBarbers();
         } else {
             alert('Permita a aplicação á aceder a tua localização.');
         }
@@ -68,7 +69,7 @@ export default () => {
             lng = coords.longitude
         }
 
-        const responseAsJson = await Api.getBarbers(lat, lng);
+        const responseAsJson = await Api.getBarbers(lat, lng, locationText);
 
         if(responseAsJson.error == ""){
             if(responseAsJson.loc != ''){
@@ -92,6 +93,11 @@ export default () => {
         getBarbers();
     }
 
+    const  onSearch =  () => {
+        setCoords(null);
+         getBarbers();
+    }
+
     return (
         <Container>
             <Scroller refreshControl={
@@ -113,6 +119,7 @@ export default () => {
                         placeholderTextColor={'#FFFFFF'}
                         value={locationText}
                         onChangeText={(text) => setLocationText(text)}
+                        onEndEditing={onSearch}
                     />
                     <LocationFinder onPress={handlePressLocationFinder}>
                         <MyLocationIcon width={24} height={24} fill={'#FFFFFF'}/>
