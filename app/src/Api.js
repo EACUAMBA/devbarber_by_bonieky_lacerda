@@ -47,8 +47,6 @@ export default {
     getBarbers : async (lat = null, lng=null, locationText = null) => {
         const token = await AsyncStorage.getItem('token');
 
-        console.log(`lat=${lat}&lng=${lng}&address=${locationText}`);
-
         const response = await fetch(`${BASE_URL}/barbers?token=${token}&lat=${lat}&lng=${lng}&address=${locationText}`);
 
         const responseAsJson = await response.json();
