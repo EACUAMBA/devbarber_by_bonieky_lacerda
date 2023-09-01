@@ -60,8 +60,15 @@ export default () => {
         setLoading(true);
         setBarbers([]);
 
-        const responseAsJson = await Api.getBarbers();
-        console.log('Response: ', responseAsJson);
+        let lat = null;
+        let lng = null;
+
+        if(coords){
+            lat = coords.latitude
+            lng = coords.longitude
+        }
+
+        const responseAsJson = await Api.getBarbers(lat, lng);
 
         if(responseAsJson.error == ""){
             if(responseAsJson.loc != ''){
