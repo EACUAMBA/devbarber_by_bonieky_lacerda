@@ -12,12 +12,16 @@ import {
     Scroller,
     SearchButton,
 
-    LoadingIcon
+    LoadingIcon,
+
+    ListArea
 } from './styles';
 
 import SearchIcon from './../../assets/search.svg';
 import MyLocationIcon from './../../assets/my_location.svg';
 import Geolocation from "@react-native-community/geolocation";
+import Api from "../../Api";
+import BarberItem from '../../components/BarberItem'
 
 export default () => {
     const navigation = useNavigation();
@@ -42,18 +46,37 @@ export default () => {
             setCoords(null);
             setBarbers([]);
 
-            Geolocation.getCurrentPosition((info) => {
+            Geolocation.getCurrentPosition(async (info) => {
                 setCoords(info.coords);
-                getBarbers();
+                await getBarbers();
             });
         } else {
             alert('Permita a aplicação á aceder a tua localização.');
         }
     }
 
-    function getBarbers() {
-        console.log('Getting barbers!')
+    async function getBarbers() {
+        setLoading(true);
+        setBarbers([]);
+
+        const responseAsJson = await Api.getBarbers();
+        console.log('Response: ', responseAsJson);
+
+        if(responseAsJson.error == ""){
+            if(responseAsJson.loc != ''){
+                setLocationText(responseAsJson.loc)
+            }
+            setBarbers(responseAsJson.data);
+        }else{
+            alert("Error: " + responseAsJson.error);
+        }
+
+        setLoading(false);
     }
+
+    useState(async () => {
+        await getBarbers();
+    }, [])
 
     return (
         <Container>
@@ -85,6 +108,13 @@ export default () => {
                     &&
                     <LoadingIcon size={'large'} color={'#FFFFFF'}/>
                 }
+
+
+                <ListArea>
+                    {
+                        barbers.map((barber, index) => <BarberItem key={index} barber={barber}/>)
+                    }
+                </ListArea>
             </Scroller>
         </Container>
     );
