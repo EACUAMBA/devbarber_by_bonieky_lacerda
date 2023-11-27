@@ -19,7 +19,7 @@ import {
 
 import SearchIcon from './../../assets/search.svg';
 import MyLocationIcon from './../../assets/my_location.svg';
-import Geolocation from "@react-native-community/geolocation";
+import Geolocation from '@react-native-community/geolocation';
 import Api from "../../Api";
 import BarberItem from '../../components/BarberItem'
 
